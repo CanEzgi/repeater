@@ -1,0 +1,18 @@
+# This file was installed with the RPI-Wireless-Hotspot script
+# For more info see https://github.com/harryallerston/RPI-Wireless-Hotspot
+# ------------------------------------------------------------------------
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+iface wlan0 inet static
+  address 10.0.0.1
+  netmask 255.255.255.0
+  
+auto wlan1
+iface wlan1 inet dhcp
+   wpa-ssid "benimo"
+   wpa-psk "208270mfu"
+
+up iptables-restore < /etc/iptables.ipv4.nat
